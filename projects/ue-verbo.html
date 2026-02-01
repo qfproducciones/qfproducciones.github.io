@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UE Verbo | QFProducciones & Huna Estudios</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/webp" href="../assets/img/global/QFMesa-de-trabajo-2mdpi.webp">
+
+    <!-- Preloads -->
+    <!-- <link rel="preload" href="assets/img/portafolio/covers/nombre-proyecto.webp" as="image" fetchpriority="high"> -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+  
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+      
+  <style>
+    /* Variables y estilos base del portafolio */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --background: #141414;
+      --foreground: #fafafa;
+      --card: #1f1f1f;
+      --card-foreground: #fafafa;
+      --muted: #333333;
+      --muted-foreground: #a3a3a3;
+      --accent: #E56C25;
+      --accent-foreground: #fafafa;
+      --border: #383838;
+      --secondary: #2a2a2a;
+      --font-sans: 'Inter', system-ui, sans-serif;
+      --font-display: 'Bebas Neue', Impact, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--background);
+      color: var(--foreground);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      max-width: 100vw;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+
+    input, textarea {
+      font-family: inherit;
+    }
+
+    /* Utility Classes */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1rem;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    @media (min-width: 768px) {
+      .container {
+        padding: 0 1.5rem;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .container {
+        padding: 0 2rem;
+      }
+    }
+
+    /* Animation Classes */
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(25px);
+      transition: opacity 0.5s cubic-bezier(0.25, 0.4, 0.25, 1), transform 0.5s cubic-bezier(0.25, 0.4, 0.25, 1);
+    }
+
+    .animate-on-scroll.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ========== HEADER IGUAL AL PORTAFOLIO.HTML ========== */
+    /* Header simplificado - solo logo (no fixed) */
+    .header {
+      position: relative; /* Cambiado de fixed a relative */
+      z-index: 10;
+      background-color: rgba(20, 20, 20, 0.1); /* Transparencia */
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 80px;
+      width: 100%;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      letter-spacing: 0.05em;
+      transition: transform 0.3s ease;
+      cursor: default;
+      width: 100%;
+      justify-content: center;
+    }
+
+    .logo-image {
+      height: 45px; /* Tamaño del logo */
+      width: auto;
+      max-width: 100%;
+    }
+
+    /* ========== HERO SECTION ========== */
+    .project-hero {
+      margin-top: -96px;   /* altura real del header */
+      padding-top: 160px;  /* compensa el texto - igual que portafolio.html */
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(135deg, rgba(229, 108, 37, 0.8) 0%, rgba(0, 0, 0, 0.8) 100%), 
+                  url('../assets/img/portafolio/ue-verbo/background-ue-verbo.webp');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-hero-content {
+      text-align: center;
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      background: rgba(20, 20, 20, 0.7);
+      backdrop-filter: blur(10px);
+      padding: 8px 20px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(229, 108, 37, 0.3);
+    }
+
+    .project-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 8vw, 5rem);
+      font-weight: 700;
+      color: var(--foreground);
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+
+    .project-hero p {
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
+      color: rgba(250, 250, 250, 0.9);
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      line-height: 1.6;
+    }
+
+    /* ========== RESTO DE SECCIONES ========== */
+    /* Photo Cover Section */
+    .photo-cover-section {
+      background-color: var(--background);
+      padding: 0;
+    }
+
+    .cover-image {
+      width: 100%;
+      height: 70vh;
+      background: url('../assets/img/portafolio/ue-verbo/background-ue-verbo.webp') center/cover no-repeat;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    .cover-caption {
+      background: rgba(20, 20, 20, 0.9);
+      color: var(--foreground);
+      padding: 2rem 3rem;
+      border-radius: 12px 12px 0 0;
+      text-align: center;
+      max-width: 600px;
+      margin-bottom: 0;
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--border);
+      border-bottom: none;
+    }
+
+    .cover-caption h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .cover-caption p {
+      color: var(--muted-foreground);
+      font-size: 1rem;
+    }
+
+    /* Stats Section */
+    .stats-section {
+      background-color: var(--secondary);
+      padding: 5rem 0;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .stat-card {
+      background-color: var(--card);
+      padding: 3rem 2rem;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      transition: all 0.3s ease;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent);
+      box-shadow: 0 10px 30px rgba(229, 108, 37, 0.1);
+    }
+
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      font-size: 1.1rem;
+      color: var(--foreground);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-sublabel {
+      font-size: 0.9rem;
+      color: var(--muted-foreground);
+      line-height: 1.6;
+    }
+
+    /* Content Sections */
+    .content-section {
+      padding: 5rem 0;
+    }
+
+    .content-section:nth-child(even) {
+      background-color: rgba(42, 42, 42, 0.3);
+    }
+
+    /* Eyebrow - igual que portafolio.html */
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+      opacity: 0;
+      transform: translateY(15px);
+      transition: opacity 0.5s cubic-bezier(0.25, 0.4, 0.25, 1), transform 0.5s cubic-bezier(0.25, 0.4, 0.25, 1);
+      width: 100%;
+    }
+
+    .eyebrow.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .eyebrow-line {
+      width: 3rem;
+      height: 1px;
+      background-color: var(--accent);
+    }
+
+    .eyebrow-text {
+      color: var(--accent);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+    }
+
+    /* Section Title - igual que portafolio.html */
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 6vw, 4rem);
+      letter-spacing: 0.02em;
+      margin-bottom: 1rem;
+      line-height: 1.1;
+      word-break: break-word;
+      overflow-wrap: break-word;
+      text-align: left;
+      opacity: 0;
+      transform: translateY(15px);
+      transition: opacity 0.5s cubic-bezier(0.25, 0.4, 0.25, 1), transform 0.5s cubic-bezier(0.25, 0.4, 0.25, 1);
+    }
+
+    .section-title.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .text-accent {
+      color: var(--accent);
+    }
+
+    .section-subtitle {
+      font-size: 1rem;
+      color: var(--muted-foreground);
+      line-height: 1.7;
+      max-width: 100%;
+      text-align: left;
+      margin-bottom: 3rem;
+      opacity: 0;
+      transform: translateY(15px);
+      transition: opacity 0.5s cubic-bezier(0.25, 0.4, 0.25, 1), transform 0.5s cubic-bezier(0.25, 0.4, 0.25, 1);
+    }
+
+    .section-subtitle.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (min-width: 768px) {
+      .section-subtitle {
+        font-size: 1.125rem;
+      }
+    }
+
+    /* Ajustar section-header para alinear a la izquierda */
+    .section-header {
+      max-width: 100%;
+      margin-bottom: 3rem;
+      padding: 0 0.5rem;
+      text-align: left;
+    }
+
+    @media (min-width: 768px) {
+      .section-header {
+        max-width: 48rem;
+        margin-bottom: 4rem;
+        padding: 0;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .section-header {
+        margin-bottom: 5rem;
+      }
+    }
+
+    /* Two Column Layout */
+    .two-column {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    @media (min-width: 992px) {
+      .two-column {
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+      }
+    }
+
+    .column-content h3 {
+      font-size: 2rem;
+      color: var(--foreground);
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+
+    .column-content p {
+      color: var(--muted-foreground);
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
+    }
+
+    .column-content ul {
+      list-style: none;
+      margin-top: 1.5rem;
+    }
+
+    .column-content li {
+      padding: 0.5rem 0 0.5rem 1.5rem;
+      position: relative;
+      color: var(--muted-foreground);
+    }
+
+    .column-content li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 6px;
+      height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+
+    .column-content li strong {
+      color: var(--foreground);
+      font-weight: 600;
+    }
+
+    .column-image {
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        display: flex; 
+        justify-content: center; 
+        align-items: center; 
+        background-color: #1f1f1f; 
+        aspect-ratio: 1/1; 
+        max-width: 520px; 
+        margin: 0 auto; 
+    }
+
+    .column-image img {
+        width: 100%; 
+        height: 100%; 
+        object-fit: cover; 
+        transition: transform 0.7s ease;
+    }
+
+    .column-image:hover img {
+      transform: scale(1.05);
+    }
+
+    /* Results Grid */
+    .results-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    @media (min-width: 768px) {
+      .results-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .result-card {
+      background-color: var(--card);
+      padding: 2.5rem 2rem;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      transition: all 0.3s ease;
+    }
+
+    .result-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent);
+    }
+
+    .result-card h4 {
+      color: var(--foreground);
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+    }
+
+    .result-card p {
+      color: var(--muted-foreground);
+      line-height: 1.7;
+    }
+
+    /* Gallery Section - MODIFICADO */
+    .gallery-section {
+      background-color: var(--secondary);
+      padding: 5rem 0;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    /* Imágenes verticales 1080x1440 (3:4 ratio) */
+    .gallery-item.vertical-image {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--border);
+      background-size: cover;
+      background-position: center;
+      transition: all 0.3s ease;
+      aspect-ratio: 3/4; /* 1080x1440 = 3:4 ratio */
+      background-color: #1f1f1f;
+    }
+
+    /* Videos verticales 1080x1920 (9:16 ratio) */
+    .gallery-item.vertical-video {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--border);
+      background-color: #000;
+      transition: all 0.3s ease;
+      aspect-ratio: 9/16; /* 1080x1920 = 9:16 ratio */
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent);
+    }
+
+    .gallery-item iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .gallery-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 1.5rem;
+      background: linear-gradient(to top, rgba(20, 20, 20, 0.9), transparent);
+      color: var(--foreground);
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+      font-size: 0.9rem;
+    }
+
+    .gallery-item:hover .gallery-caption {
+      transform: translateY(0);
+    }
+
+    /* Footer (mismo que original) */
+    .footer {
+      background-color: var(--foreground);
+      color: var(--background);
+      padding: 3rem 0;
+      width: 100%;
+    }
+
+    @media (min-width: 768px) {
+      .footer {
+        padding: 4rem 0;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .footer {
+        padding: 5rem 0;
+      }
+    }
+
+    .footer-grid {
+      display: grid;
+      gap: 2.5rem;
+      width: 100%;
+    }
+
+    @media (min-width: 768px) {
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3rem;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .footer-grid {
+        grid-template-columns: 2fr 1fr 1fr;
+        gap: 2rem;
+      }
+    }
+
+    .footer-brand {
+      margin-bottom: 1.5rem;
+      display: inline-block;
+      width: 100%;
+    }
+
+    .footer-brand span:first-child {
+      font-family: var(--font-display);
+      font-size: 1.875rem;
+      letter-spacing: 0.05em;
+    }
+
+    .footer-brand span:last-child {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      letter-spacing: 0.05em;
+      color: var(--accent);
+      margin-left: 0.5rem;
+    }
+
+    .footer-description {
+      color: rgba(20, 20, 20, 0.6);
+      max-width: 100%;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+      word-break: break-word;
+    }
+
+    @media (min-width: 768px) {
+      .footer-description {
+        max-width: 28rem;
+      }
+    }
+
+    .footer-social {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-social a {
+      width: 2.5rem;
+      height: 2.5rem;
+      border: 1px solid rgba(20, 20, 20, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+    }
+
+    .footer-social a:hover {
+      background-color: var(--accent);
+      border-color: var(--accent);
+      color: var(--accent-foreground);
+    }
+
+    .footer-social svg {
+      width: 1rem;
+      height: 1rem;
+    }
+
+    .footer-heading {
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.3em;
+      color: rgba(20, 20, 20, 0.4);
+      margin-bottom: 1.5rem;
+      word-break: break-word;
+    }
+
+    .footer-links {
+      list-style: none;
+      width: 100%;
+    }
+
+    .footer-links li {
+      margin-bottom: 1rem;
+    }
+
+    .footer-links a {
+      color: rgba(20, 20, 20, 0.6);
+      transition: color 0.3s ease;
+      word-break: break-word;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent);
+    }
+
+    .footer-bottom {
+      margin-top: 3rem;
+      padding-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      width: 100%;
+      text-align: center;
+    }
+
+    @media (min-width: 768px) {
+      .footer-bottom {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+      }
+    }
+
+    .footer-copyright {
+      font-size: 0.875rem;
+      color: rgba(20, 20, 20, 0.4);
+      word-break: break-word;
+    }
+
+    .footer-legal {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      font-size: 0.875rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    @media (min-width: 768px) {
+      .footer-legal {
+        justify-content: flex-start;
+      }
+    }
+
+    .footer-legal a {
+      color: rgba(20, 20, 20, 0.4);
+      transition: color 0.3s ease;
+      word-break: break-word;
+    }
+
+    .footer-legal a:hover {
+      color: var(--accent);
+    }
+
+    .footer .logo {
+      justify-content: flex-start;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .header {
+        height: 70px;
+      }
+
+      .header-inner {
+        height: 70px;
+      }
+
+      .logo-image {
+        height: 40px;
+      }
+
+      .project-hero {
+        min-height: 80vh;
+        background-attachment: scroll;
+      }
+
+      .project-hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .cover-image {
+        height: 50vh;
+      }
+
+      .cover-caption {
+        padding: 1.5rem;
+        max-width: 90%;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .content-section {
+        padding: 3rem 0;
+      }
+
+      .section-header h2 {
+        font-size: 2rem;
+      }
+
+      /* Ajustes para galería en móviles */
+      .gallery-item.vertical-image,
+      .gallery-item.vertical-video {
+        aspect-ratio: 3/4; /* En móviles todas se ven igual para mejor experiencia */
+      }
+    }
+
+    @media (max-width: 576px) {
+      .project-hero h1 {
+        font-size: 2rem;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .results-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header simplificado - solo logo -->
+  <header class="header" id="header">
+    <div class="container header-inner">
+      <div class="logo">
+        <a href="../index.html">
+          <img src="../assets/img/global/QFMesa-de-trabajo-2mdpi.webp"
+              alt="QFProducciones"
+              class="logo-image">
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="project-hero">
+    <div class="container project-hero-content">
+      <span class="hero-tag">Huna Estudios</span>
+      <h1>UE Verbo</h1>
+      <p>Manejo de redes sociales y trafficker para una Unidad Educativa Cristiana en Quito.</p>
+    </div>
+  </section>
+
+  <!-- Photo Cover Section -->
+  <section class="photo-cover-section">
+    <div class="cover-image">
+      <div class="cover-caption">
+        <h3>Formación Espiritual</h3>
+        <p>Construcción visual coherente para una educación basada en fe</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats-section">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-card animate-on-scroll">
+          <div class="stat-number">+190k</div>
+          <div class="stat-label">Engagement</div>
+          <div class="stat-sublabel">Medida acumulada en todas sus redes sociales activas.</div>
+        </div>
+        <div class="stat-card animate-on-scroll">
+          <div class="stat-number">4,01%</div>
+          <div class="stat-label">Engagement - TikTok</div>
+          <div class="stat-sublabel">Interracción con el contenido respecto al total de visualizaciones orgánicas.</div>
+        </div>
+        <div class="stat-card animate-on-scroll">
+          <div class="stat-number">3,22%</div>
+          <div class="stat-label">Engagement - Instagram</div>
+          <div class="stat-sublabel">Tasa promedio de interacción generada por publicaciones y reels.</div>
+        </div>
+        <div class="stat-card animate-on-scroll">
+          <div class="stat-number">+670k</div>
+          <div class="stat-label">Seguidores</div>
+          <div class="stat-sublabel">Acumulados manejando sus redes sociales en estos meses.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- El Cliente -->
+  <section class="content-section">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow animate-on-scroll">
+        <span class="eyebrow-line"></span>
+        <span class="eyebrow-text">Caso de Estudio</span>
+      </div>
+      <h2 class="section-title animate-on-scroll">
+        UNA INSTITUCIÓN <span class="text-accent">CON VALORES</span>
+      </h2>
+      <p class="section-subtitle animate-on-scroll">
+        Principios cristianos, enseñanza de inglés con nativos y la mejor educación.
+      </p>
+    </div>
+    <div class="two-column">
+      <div class="column-content">
+        <h3>Contexto y Desafío</h3>
+        <p>Nuestro cliente con una amplia trayectoria enfrentaba dos desafíos:<br>
+          1. Reflejar mediante el contenido visual atributos como: educación, espiritualidad y liderazgo.<br>
+          2. Reflejar mediante el contenido visual atributos como: educación, espiritualidad y liderazgo.
+        </p>
+        <p>Objetivo principal: Construcción de una línea gráfica para estandarizar los contenidos audiovisuales y fidelizar a su audiencia o llegar a un nuevo público interesado en los servicios de la marca.</p>
+        <ul>
+          <li><strong>Sector:</strong> Servicio educativo</li>
+          <li><strong>Duración del Proyecto:</strong> 10 meses - actualidad</li>
+          <li><strong>Alcance:</strong> Redes Sociales</li>
+        </ul>
+        </div>
+        <div class="column-image">
+          <img src="../assets/img/portafolio/ue-verbo/quien-es-ue-verbo.webp" alt="Cliente UE Verbo" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Resultados -->
+  <section class="content-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="eyebrow animate-on-scroll">
+          <span class="eyebrow-line"></span>
+          <span class="eyebrow-text">Impacto</span>
+        </div>
+        <h2 class="section-title animate-on-scroll">
+          RESULTADOS<span class="text-accent"> OBTENIDOS</span>
+        </h2>
+        <p class="section-subtitle animate-on-scroll">
+          Resultados obtenidos sobre el alcance de la campaña
+        </p>
+      </div>
+      <div class="results-grid">
+        <div class="result-card animate-on-scroll">
+          <h4>Comunicación Institucional</h4>
+          <p>Mejor difusión de actividades académicas y formativas fortaleciendo la imagen institucional del colegio.</p>
+        </div>
+        <div class="result-card animate-on-scroll">
+          <h4>Vinculación Comunitaria</h4>
+          <p>Mayor participación de padres, estudiantes y docentes en contenidos relacionados a eventos escolares.</p>
+        </div>
+        <div class="result-card animate-on-scroll">
+          <h4>Identidad Educativa</h4>
+          <p>Refuerzo de valores y propuesta educativa mediante una comunicación alineada a su enfoque formativo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section class="gallery-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="eyebrow animate-on-scroll">
+          <span class="eyebrow-line"></span>
+          <span class="eyebrow-text">Portafolio</span>
+        </div>
+        <h2 class="section-title animate-on-scroll">
+          PIEZAS<span class="text-accent"> DESTACADAS</span>
+        </h2>
+        <p class="section-subtitle animate-on-scroll">
+          Selección de trabajos visuales más impactantes de la campaña
+        </p>
+      </div>
+      <div class="gallery-grid">
+        <!-- Imagen 1 - Vertical 1080x1440 (3:4) -->
+        <div class="gallery-item vertical-image" style="background-image: url('../assets/img/portafolio/ue-verbo/ue-verbo-1.webp');">
+          <div class="gallery-caption">Presentación de los niños</div>
+        </div>
+
+        <!-- Imagen 2 - Vertical 1080x1440 (3:4) -->
+        <div class="gallery-item vertical-image" style="background-image: url('../assets/img/portafolio/ue-verbo/ue-verbo-2.webp');">
+          <div class="gallery-caption">Matrículas abiertas</div>
+        </div>
+
+        <!-- Imagen 3 - Vertical 1080x1440 (3:4) -->
+        <div class="gallery-item vertical-image" style="background-image: url('../assets/img/portafolio/ue-verbo/ue-verbo-3.webp');">
+          <div class="gallery-caption">Devocionales</div>
+        </div>
+
+        <!-- Video 1 - Vertical 1080x1920 (9:16) -->
+        <div class="gallery-item vertical-video">
+          <iframe src="https://www.youtube.com/embed/trI9DhhGM4A?rel=0&modestbranding=1&vq=hd1080"
+                  title="Pasantes Americanas"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                  loading="lazy">
+          </iframe>
+          <div class="gallery-caption">Pasantes Americanas</div>
+        </div>
+
+        <!-- Video 2 - Vertical 1080x1920 (9:16) -->
+        <div class="gallery-item vertical-video">
+          <iframe src="https://www.youtube.com/embed/xLb4JgQr6iU?rel=0&modestbranding=1&vq=hd1080"
+                  title="Concurso de oratoria"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                  loading="lazy">
+          </iframe>
+          <div class="gallery-caption">Concurso de oratoria</div>
+        </div>
+
+        <!-- Video 3 - Vertical 1080x1920 (9:16) -->
+        <div class="gallery-item vertical-video">
+          <iframe src="https://www.youtube.com/embed/WwmzQz0kDcA?rel=0&modestbranding=1&vq=hd1080"
+                  title="Matrículas Verbo"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                  loading="lazy">
+          </iframe>
+          <div class="gallery-caption">Matrículas Verbo</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="logo">
+            <img src="../assets/img/global/QFMesa-de-trabajo-2mdpi.webp" alt="QFProducciones" class="logo-image">
+          </div>
+          <p class="footer-description">
+            Creación de contenidos audiovisuales para todo tipo de eventos. Ofrecemos servicios de grabación, edición, transmisión y narración con equipos de alta calidad y profesionales capacitados.
+          </p>
+          <div class="footer-social">
+            <a href="https://qfproduccionesec.online" target="_blank" rel="noopener noreferrer" aria-label="Web">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="2" y1="12" x2="22" y2="12"/>
+                <path d="M12 2a15.3 15.3 0 0 1 0 20a15.3 15.3 0 0 1 0-20"/>
+              </svg>
+            </a>
+            <a href="https://www.facebook.com/qfproducciones/?locale=es_LA" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="footer-heading">Información</h3>
+          <ul class="footer-links">
+            <li><a href="https://qfproduccionesec.online/" target="_blank">Página Web</a></li>
+            <li><a href="https://hunaestudios.github.io" target="_blank">Socios: Huna Estudios</a></li>
+            <li><a href="#proyectos">Proyectos</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer-heading">Contacto</h3>
+          <ul class="footer-links">
+            <li>
+              <a href="mailto:produccion@qfproducciones.com" target="_blank" rel="noopener noreferrer">produccion@qfproducciones.com</a>
+            </li>
+            <li>
+              <a href="https://wa.me/+593986833077" target="_blank" rel="noopener noreferrer">+593 98 683 3077</a>
+            </li>
+            <li>
+              <a href="https://share.google/rIY6LdLNj6Bne4eb8" target="_blank" rel="noopener noreferrer">
+                Jaime Chiriboga Quito 4993, Quito 170511
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copyright">2026 QFProducciones. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Intersection Observer para animaciones al hacer scroll
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, index * 100);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    // Observar todos los elementos con animación (incluyendo las nuevas clases)
+    document.querySelectorAll('.animate-on-scroll, .eyebrow, .section-title, .section-subtitle').forEach((el) => {
+      observer.observe(el);
+    });
+
+    // Smooth scroll para enlaces internos
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Font Awesome para los íconos
+    const faScript = document.createElement('script');
+    faScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js';
+    faScript.integrity = 'sha512-fD9DI5bZwQxOi7MhYWnnNPlvXdp/2Pj3XSTRrFs5FQa4mizyGLnJcN6tuvUS6LbmgN1ut+XGSABKvjN0H6Aoow==';
+    faScript.crossOrigin = 'anonymous';
+    faScript.referrerPolicy = 'no-referrer';
+    document.head.appendChild(faScript);
+
+    // Prevenir zoom en input en iOS
+    document.addEventListener('touchstart', function() {}, {passive: true});
+  </script>
+</body>
+</html>

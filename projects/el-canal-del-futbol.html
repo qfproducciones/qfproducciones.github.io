@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto Video | QFProducciones & Huna Estudios</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/webp" href="../assets/img/global/QFMesa-de-trabajo-2mdpi.webp">
+
+    <!-- Preloads -->
+    <!-- <link rel="preload" href="assets/img/portafolio/covers/nombre-proyecto.webp" as="image" fetchpriority="high"> -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+  
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+      
+  <style>
+    /* Variables y estilos base del portafolio */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --background: #141414;
+      --foreground: #fafafa;
+      --card: #1f1f1f;
+      --card-foreground: #fafafa;
+      --muted: #333333;
+      --muted-foreground: #a3a3a3;
+      --accent: #E56C25;
+      --accent-foreground: #fafafa;
+      --border: #383838;
+      --secondary: #2a2a2a;
+      --font-sans: 'Inter', system-ui, sans-serif;
+      --font-display: 'Bebas Neue', Impact, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--background);
+      color: var(--foreground);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      max-width: 100vw;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+
+    input, textarea {
+      font-family: inherit;
+    }
+
+    /* Utility Classes */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1rem;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    @media (min-width: 768px) {
+      .container {
+        padding: 0 1.5rem;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .container {
+        padding: 0 2rem;
+      }
+    }
+
+    /* Animation Classes */
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(25px);
+      transition: opacity 0.5s cubic-bezier(0.25, 0.4, 0.25, 1), transform 0.5s cubic-bezier(0.25, 0.4, 0.25, 1);
+    }
+
+    .animate-on-scroll.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ========== HEADER IGUAL AL PORTAFOLIO.HTML ========== */
+    /* Header simplificado - solo logo (no fixed) */
+    .header {
+      position: relative; /* Cambiado de fixed a relative */
+      z-index: 10;
+      background-color: rgba(20, 20, 20, 0.1); /* Transparencia */
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 80px;
+      width: 100%;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      letter-spacing: 0.05em;
+      transition: transform 0.3s ease;
+      cursor: default;
+      width: 100%;
+      justify-content: center;
+    }
+
+    .logo-image {
+      height: 45px; /* Tamaño del logo */
+      width: auto;
+      max-width: 100%;
+    }
+
+    /* ========== HERO SECTION ========== */
+    .project-hero {
+      margin-top: -96px;   /* altura real del header */
+      padding-top: 160px;  /* compensa el texto - igual que portafolio.html */
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(135deg, rgba(229, 108, 37, 0.8) 0%, rgba(0, 0, 0, 0.8) 100%), 
+                  url('../assets/img/portafolio/serie-b/ecdf.webp');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-hero-content {
+      text-align: center;
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      background: rgba(20, 20, 20, 0.7);
+      backdrop-filter: blur(10px);
+      padding: 8px 20px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(229, 108, 37, 0.3);
+    }
+
+    .project-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 8vw, 5rem);
+      font-weight: 700;
+      color: var(--foreground);
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+
+    .project-hero p {
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
+      color: rgba(250, 250, 250, 0.9);
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      line-height: 1.6;
+    }
+
+    /* Eyebrow - igual que portafolio.html */
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+      opacity: 0;
+      transform: translateY(15px);
+      transition: opacity 0.5s cubic-bezier(0.25, 0.4, 0.25, 1), transform 0.5s cubic-bezier(0.25, 0.4, 0.25, 1);
+      width: 100%;
+    }
+
+    .eyebrow.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .eyebrow-line {
+      width: 3rem;
+      height: 1px;
+      background-color: var(--accent);
+    }
+
+    .eyebrow-text {
+      color: var(--accent);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+    }
+
+    /* Section Title - igual que portafolio.html */
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 6vw, 4rem);
+      letter-spacing: 0.02em;
+      margin-bottom: 1rem;
+      line-height: 1.1;
+      word-break: break-word;
+      overflow-wrap: break-word;
+      text-align: left;
+      opacity: 0;
+      transform: translateY(15px);
+      transition: opacity 0.5s cubic-bezier(0.25, 0.4, 0.25, 1), transform 0.5s cubic-bezier(0.25, 0.4, 0.25, 1);
+    }
+
+    .section-title.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .text-accent {
+      color: var(--accent);
+    }
+
+    .section-subtitle {
+      font-size: 1rem;
+      color: var(--muted-foreground);
+      line-height: 1.7;
+      max-width: 100%;
+      text-align: left;
+      margin-bottom: 3rem;
+      opacity: 0;
+      transform: translateY(15px);
+      transition: opacity 0.5s cubic-bezier(0.25, 0.4, 0.25, 1), transform 0.5s cubic-bezier(0.25, 0.4, 0.25, 1);
+    }
+
+    .section-subtitle.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (min-width: 768px) {
+      .section-subtitle {
+        font-size: 1.125rem;
+      }
+    }
+
+    /* Ajustar section-header para alinear a la izquierda */
+    .section-header {
+      max-width: 100%;
+      margin-bottom: 3rem;
+      padding: 0 0.5rem;
+      text-align: left;
+    }
+
+    @media (min-width: 768px) {
+      .section-header {
+        max-width: 48rem;
+        margin-bottom: 4rem;
+        padding: 0;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .section-header {
+        margin-bottom: 5rem;
+      }
+    }
+
+    /* Video Gallery Section - MODIFICADO PARA VIDEOS HORIZONTALES (16:9) */
+    .gallery-section {
+      background-color: var(--secondary);
+      padding: 5rem 0;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    @media (min-width: 768px) {
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    /* Videos horizontales 1920x1080 (16:9 ratio) */
+    .gallery-item.horizontal-video {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--border);
+      background-color: #000;
+      transition: all 0.3s ease;
+      aspect-ratio: 16/9; /* 1920x1080 = 16:9 ratio */
+      margin-bottom: 2rem;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent);
+    }
+
+    .gallery-item iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .gallery-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 1.5rem;
+      background: linear-gradient(to top, rgba(20, 20, 20, 0.9), transparent);
+      color: var(--foreground);
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+      font-size: 0.9rem;
+    }
+
+    .gallery-item:hover .gallery-caption {
+      transform: translateY(0);
+    }
+
+    /* Footer (mismo que original) */
+    .footer {
+      background-color: var(--foreground);
+      color: var(--background);
+      padding: 3rem 0;
+      width: 100%;
+    }
+
+    @media (min-width: 768px) {
+      .footer {
+        padding: 4rem 0;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .footer {
+        padding: 5rem 0;
+      }
+    }
+
+    .footer-grid {
+      display: grid;
+      gap: 2.5rem;
+      width: 100%;
+    }
+
+    @media (min-width: 768px) {
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3rem;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .footer-grid {
+        grid-template-columns: 2fr 1fr 1fr;
+        gap: 2rem;
+      }
+    }
+
+    .footer-brand {
+      margin-bottom: 1.5rem;
+      display: inline-block;
+      width: 100%;
+    }
+
+    .footer-brand span:first-child {
+      font-family: var(--font-display);
+      font-size: 1.875rem;
+      letter-spacing: 0.05em;
+    }
+
+    .footer-brand span:last-child {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      letter-spacing: 0.05em;
+      color: var(--accent);
+      margin-left: 0.5rem;
+    }
+
+    .footer-description {
+      color: rgba(20, 20, 20, 0.6);
+      max-width: 100%;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+      word-break: break-word;
+    }
+
+    @media (min-width: 768px) {
+      .footer-description {
+        max-width: 28rem;
+      }
+    }
+
+    .footer-social {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-social a {
+      width: 2.5rem;
+      height: 2.5rem;
+      border: 1px solid rgba(20, 20, 20, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+    }
+
+    .footer-social a:hover {
+      background-color: var(--accent);
+      border-color: var(--accent);
+      color: var(--accent-foreground);
+    }
+
+    .footer-social svg {
+      width: 1rem;
+      height: 1rem;
+    }
+
+    .footer-heading {
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.3em;
+      color: rgba(20, 20, 20, 0.4);
+      margin-bottom: 1.5rem;
+      word-break: break-word;
+    }
+
+    .footer-links {
+      list-style: none;
+      width: 100%;
+    }
+
+    .footer-links li {
+      margin-bottom: 1rem;
+    }
+
+    .footer-links a {
+      color: rgba(20, 20, 20, 0.6);
+      transition: color 0.3s ease;
+      word-break: break-word;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent);
+    }
+
+    .footer-bottom {
+      margin-top: 3rem;
+      padding-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      width: 100%;
+      text-align: center;
+    }
+
+    @media (min-width: 768px) {
+      .footer-bottom {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+      }
+    }
+
+    .footer-copyright {
+      font-size: 0.875rem;
+      color: rgba(20, 20, 20, 0.4);
+      word-break: break-word;
+    }
+
+    .footer-legal {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      font-size: 0.875rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    @media (min-width: 768px) {
+      .footer-legal {
+        justify-content: flex-start;
+      }
+    }
+
+    .footer-legal a {
+      color: rgba(20, 20, 20, 0.4);
+      transition: color 0.3s ease;
+      word-break: break-word;
+    }
+
+    .footer-legal a:hover {
+      color: var(--accent);
+    }
+
+    .footer .logo {
+      justify-content: flex-start;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .header {
+        height: 70px;
+      }
+
+      .header-inner {
+        height: 70px;
+      }
+
+      .logo-image {
+        height: 40px;
+      }
+
+      .floating-back-button {
+        top: 90px;
+        left: 15px;
+        padding: 10px 16px;
+        font-size: 0.9rem;
+      }
+
+      .project-hero {
+        min-height: 80vh;
+        background-attachment: scroll;
+      }
+
+      .project-hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .cover-image {
+        height: 50vh;
+      }
+
+      .cover-caption {
+        padding: 1.5rem;
+        max-width: 90%;
+      }
+
+      .content-section {
+        padding: 3rem 0;
+      }
+
+      .section-header h2 {
+        font-size: 2rem;
+      }
+
+      .scroll-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+      }
+
+      /* Ajustes para galería en móviles */
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .floating-back-button {
+        top: 85px;
+        left: 10px;
+        padding: 8px 12px;
+        font-size: 0.85rem;
+      }
+
+      .floating-back-button span {
+        display: none;
+      }
+
+      .project-hero h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header simplificado - solo logo -->
+  <header class="header" id="header">
+    <div class="container header-inner">
+      <div class="logo">
+        <a href="../index.html">
+          <img src="../assets/img/global/QFMesa-de-trabajo-2mdpi.webp"
+              alt="QFProducciones"
+              class="logo-image">
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="project-hero">
+    <div class="container project-hero-content">
+      <span class="hero-tag">Live Broadcast</span>
+      <h1>El Canal del Fútbol</h1>
+      <p>Cobertura multicámara y multiseñal con seguimiento y retransmisión en tiempo real.</p>
+    </div>
+  </section>
+
+  <!-- Video Gallery - VIDEOS HORIZONTALES (16:9) -->
+  <section class="gallery-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="eyebrow animate-on-scroll">
+          <span class="eyebrow-line"></span>
+          <span class="eyebrow-text">Portafolio</span>
+        </div>
+        <h2 class="section-title animate-on-scroll">
+          VIDEO<span class="text-accent">GRAFÍA</span>
+        </h2>
+        <p class="section-subtitle animate-on-scroll">
+          Selección de algunas de nuestras coberturas en la Serie B de la Liga Ecuabet del Ecuador, para El Canal del Fútbol.
+        </p>
+      </div>
+      <div class="gallery-grid">
+        <!-- Fila 1 -->
+        <!-- Video 1 - Horizontal 1920x1080 (16:9) -->
+        <div class="gallery-item horizontal-video">
+          <iframe src="https://www.youtube.com/embed/c9HknbK8km8"
+                  title="Video 1 - Proyecto de Video"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                  loading="lazy">
+          </iframe>
+          <div class="gallery-caption">Video promocional horizontal - YouTube</div>
+        </div>
+
+        <!-- Video 2 - Horizontal 1920x1080 (16:9) -->
+        <div class="gallery-item horizontal-video">
+          <iframe src="https://www.youtube.com/embed/V_11gF32L24"
+                  title="Video 2 - Proyecto de Video"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                  loading="lazy">
+          </iframe>
+          <div class="gallery-caption">Video testimonial horizontal - Web</div>
+        </div>
+
+        <!-- Fila 2 -->
+        <!-- Video 3 - Horizontal 1920x1080 (16:9) -->
+        <div class="gallery-item horizontal-video">
+          <iframe src="https://www.youtube.com/embed/5srJeqCfmBk"
+                  title="Video 3 - Proyecto de Video"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                  loading="lazy">
+          </iframe>
+          <div class="gallery-caption">Video del proceso de producción - Documental</div>
+        </div>
+
+        <!-- Video 4 - Horizontal 1920x1080 (16:9) -->
+        <div class="gallery-item horizontal-video">
+          <iframe src="https://www.youtube.com/embed/L5qp01g4T2o"
+                  title="Video 4 - Proyecto de Video"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                  loading="lazy">
+          </iframe>
+          <div class="gallery-caption">Video educativo horizontal - Tutorial</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="logo">
+            <img src="../assets/img/global/QFMesa-de-trabajo-2mdpi.webp" alt="QFProducciones" class="logo-image">
+          </div>
+          <p class="footer-description">
+            Creación de contenidos audiovisuales para todo tipo de eventos. Ofrecemos servicios de grabación, edición, transmisión y narración con equipos de alta calidad y profesionales capacitados.
+          </p>
+          <div class="footer-social">
+            <a href="https://qfproduccionesec.online" target="_blank" rel="noopener noreferrer" aria-label="Web">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="2" y1="12" x2="22" y2="12"/>
+                <path d="M12 2a15.3 15.3 0 0 1 0 20a15.3 15.3 0 0 1 0-20"/>
+              </svg>
+            </a>
+            <a href="https://www.facebook.com/qfproducciones/?locale=es_LA" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="footer-heading">Información</h3>
+          <ul class="footer-links">
+            <li><a href="https://qfproduccionesec.online/" target="_blank">Página Web</a></li>
+            <li><a href="https://hunaestudios.github.io" target="_blank">Socios: Huna Estudios</a></li>
+            <li><a href="#proyectos">Proyectos</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer-heading">Contacto</h3>
+          <ul class="footer-links">
+            <li>
+              <a href="mailto:produccion@qfproducciones.com" target="_blank" rel="noopener noreferrer">produccion@qfproducciones.com</a>
+            </li>
+            <li>
+              <a href="https://wa.me/+593986833077" target="_blank" rel="noopener noreferrer">+593 98 683 3077</a>
+            </li>
+            <li>
+              <a href="https://share.google/rIY6LdLNj6Bne4eb8" target="_blank" rel="noopener noreferrer">
+                Jaime Chiriboga Quito 4993, Quito 170511
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copyright">2026 QFProducciones. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Intersection Observer para animaciones al hacer scroll
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, index * 100);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    // Observar todos los elementos con animación (incluyendo las nuevas clases)
+    document.querySelectorAll('.animate-on-scroll, .eyebrow, .section-title, .section-subtitle').forEach((el) => {
+      observer.observe(el);
+    });
+
+    // Smooth scroll para enlaces internos
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Font Awesome para los íconos
+    const faScript = document.createElement('script');
+    faScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js';
+    faScript.integrity = 'sha512-fD9DI5bZwQxOi7MhYWnnNPlvXdp/2Pj3XSTRrFs5FQa4mizyGLnJcN6tuvUS6LbmgN1ut+XGSABKvjN0H6Aoow==';
+    faScript.crossOrigin = 'anonymous';
+    faScript.referrerPolicy = 'no-referrer';
+    document.head.appendChild(faScript);
+
+    // Prevenir zoom en input en iOS
+    document.addEventListener('touchstart', function() {}, {passive: true});
+  </script>
+</body>
+</html>

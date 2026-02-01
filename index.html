@@ -1,0 +1,1416 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio QFProducciones</title>
+
+    <!-- SEO -->
+    <meta name="description" content="Portafolio audiovisual de QFProducciones. Producción de video, fotografía y contenido creativo para marcas y proyectos en Ecuador.">
+    <meta name="keywords" content="QFProducciones, portafolio audiovisual, producción de video Ecuador, fotografía profesional, contenido creativo">
+    <meta name="author" content="QFProducciones">
+    <meta name="robots" content="index, follow">
+
+    <!-- Favicon y preloads críticos -->
+    <link rel="icon" type="image/webp" href="assets/img/global/QFMesa-de-trabajo-2mdpi.webp">
+
+    <!-- Preloads -->
+    <link rel="preload" href="assets/img/portafolio/portafolio-hero.webp" as="image" fetchpriority="high">
+    <link rel="preload" href="assets/img/global/logo-huna-1.webp" as="image">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+  
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+      
+  <style>
+    /* Reutilizamos los mismos estilos del index con cambio de color */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --background: #141414;
+      --foreground: #fafafa;
+      --card: #1f1f1f;
+      --card-foreground: #fafafa;
+      --muted: #333333;
+      --muted-foreground: #a3a3a3;
+      --accent: #E56C25; /* Cambiado de #D93240 a #E56C25 */
+      --accent-foreground: #fafafa;
+      --border: #383838;
+      --secondary: #2a2a2a;
+      --font-sans: 'Inter', system-ui, sans-serif;
+      --font-display: 'Bebas Neue', Impact, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--background);
+      color: var(--foreground);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      max-width: 100vw;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+
+    input, textarea {
+      font-family: inherit;
+    }
+
+    /* Utility Classes */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1rem;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    @media (min-width: 768px) {
+      .container {
+        padding: 0 1.5rem;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .container {
+        padding: 0 2rem;
+      }
+    }
+
+    /* Animation Classes */
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(25px);
+      transition: opacity 0.5s cubic-bezier(0.25, 0.4, 0.25, 1), transform 0.5s cubic-bezier(0.25, 0.4, 0.25, 1);
+    }
+
+    .animate-on-scroll.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .animate-fade-in {
+      opacity: 0;
+      transition: opacity 0.4s ease-out;
+    }
+
+    .animate-fade-in.visible {
+      opacity: 1;
+    }
+
+    /* Header simplificado - solo logo */
+    .header {
+      position: relative;
+      z-index: 10;
+      background-color: rgba(20, 20, 20, 0.1);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .hero-simple {
+      margin-top: -96px;   /* altura real del header */
+      padding-top: 160px;  /* compensa el texto */
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 80px;
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      letter-spacing: 0.05em;
+      transition: transform 0.3s ease;
+      cursor: default;
+      width: 100%;
+      justify-content: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.025em;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background-color: var(--accent);
+      color: var(--accent-foreground);
+    }
+
+    .btn-primary:hover {
+      background-color: rgba(229, 108, 37, 0.9); /* Ajustado al nuevo color */
+    }
+
+    .btn-outline {
+      border: 1px solid rgba(250, 250, 250, 0.3);
+      color: var(--foreground);
+      background: transparent;
+    }
+
+    .btn-outline:hover {
+      background-color: rgba(250, 250, 250, 0.1);
+    }
+
+    .btn-lg {
+      padding: 1rem 2rem;
+      font-size: 1rem;
+    }
+
+    /* Section Styles */
+    .section {
+      padding: 4rem 0;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    @media (min-width: 768px) {
+      .section {
+        padding: 5rem 0;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .section {
+        padding: 8rem 0;
+      }
+    }
+
+    .section-header {
+      max-width: 100%;
+      margin-bottom: 3rem;
+      padding: 0 0.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .section-header {
+        max-width: 48rem;
+        margin-bottom: 4rem;
+        padding: 0;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .section-header {
+        margin-bottom: 5rem;
+      }
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 6vw, 4rem);
+      letter-spacing: 0.02em;
+      margin-bottom: 1rem;
+      line-height: 1.1;
+      word-break: break-word;
+      overflow-wrap: break-word;
+    }
+
+    .text-accent {
+      color: var(--accent);
+    }
+
+    .section-subtitle {
+      font-size: 1rem;
+      color: var(--muted-foreground);
+      line-height: 1.7;
+      max-width: 100%;
+    }
+
+    @media (min-width: 768px) {
+      .section-subtitle {
+        font-size: 1.125rem;
+      }
+    }
+
+    /* Eyebrow */
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+      opacity: 0;
+      transform: translateY(15px);
+      animation: fadeInUp 0.5s cubic-bezier(0.25, 0.4, 0.25, 1) 0.1s forwards;
+      width: 100%;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .eyebrow-line {
+      width: 3rem;
+      height: 1px;
+      background-color: var(--accent);
+    }
+
+    .eyebrow-text {
+      color: var(--accent);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+    }
+
+    /* Hero simple para Portafolio */
+    .hero-simple {
+      position: relative;
+      min-height: 50vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      padding-top: 80px;
+      background: linear-gradient(to bottom, rgba(20, 20, 20, 0.4), var(--background)),
+                  url('assets/img/sobre-nosotros/qfproducciones.webp');
+      background-size: cover;
+      background-position: center;
+      text-align: center;
+      width: 100%;
+    }
+
+    @media (min-width: 768px) {
+      .hero-simple {
+        min-height: 60vh;
+        padding-top: 100px;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .hero-simple {
+        min-height: 70vh;
+      }
+    }
+
+    .hero-simple-content {
+      max-width: 100%;
+      margin: 0 auto;
+      position: relative;
+      z-index: 10;
+      padding: 0 1rem;
+      width: 100%;
+    }
+
+    @media (min-width: 768px) {
+      .hero-simple-content {
+        max-width: 56rem;
+        padding: 0;
+      }
+    }
+
+    .hero-simple-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 8vw, 6rem);
+      line-height: 0.9;
+      letter-spacing: 0.02em;
+      margin-bottom: 1.5rem;
+      word-break: break-word;
+      overflow-wrap: break-word;
+    }
+
+    /* Añade esto en la sección del hero simple */
+    @media (min-width: 768px) {
+      .hero-simple-content {
+        max-width: 56rem; /* Restaurar el límite de ancho */
+        margin: 0 auto; /* Centrar */
+      }
+      
+      /* Limitar también el subtítulo en desktop */
+      .hero-simple .section-subtitle {
+        max-width: 42rem; /* O ajusta según necesites */
+        margin-left: auto;
+        margin-right: auto;
+      }
+    } 
+
+    /* Portfolio Grid */
+    .portfolio-section {
+      background-color: var(--background);
+      width: 100%;
+    }
+
+    .portfolio-grid {
+      display: grid;
+      gap: 1.5rem;
+      width: 100%;
+    }
+
+    @media (min-width: 768px) {
+      .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .portfolio-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .portfolio-item {
+      background-color: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all 0.5s ease;
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .portfolio-item:hover {
+      border-color: rgba(229, 108, 37, 0.5); /* Ajustado al nuevo color */
+      transform: translateY(-10px);
+    }
+
+    .portfolio-image {
+      aspect-ratio: 16/9;
+      overflow: hidden;
+      background-color: var(--secondary);
+      width: 100%;
+    }
+
+    .portfolio-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s ease;
+    }
+
+    .portfolio-item:hover .portfolio-image img {
+      transform: scale(1.05);
+    }
+
+    .portfolio-content {
+      padding: 1.5rem;
+      width: 100%;
+    }
+
+    @media (min-width: 768px) {
+      .portfolio-content {
+        padding: 2rem;
+      }
+    }
+
+    .portfolio-category {
+      color: var(--accent);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      display: block;
+      word-break: break-word;
+    }
+
+    .portfolio-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--foreground);
+      margin-bottom: 1rem;
+      line-height: 1.3;
+      word-break: break-word;
+    }
+
+    @media (min-width: 768px) {
+      .portfolio-title {
+        font-size: 1.5rem;
+      }
+    }
+
+    .portfolio-description {
+      color: var(--muted-foreground);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+      word-break: break-word;
+    }
+
+    @media (min-width: 768px) {
+      .portfolio-description {
+        font-size: 1rem;
+      }
+    }
+
+    .portfolio-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      width: 100%;
+    }
+
+    /* Ajuste para separar el Hero de la sección de Proyectos */
+    .portfolio-section {
+      position: relative;
+      z-index: 5;
+    }
+
+    /* Asegurar que la sección de proyectos no quede tapada y reducir espacio con el CTA */
+    .section.portfolio-section {
+      margin-top: 0;
+      padding-top: 3rem !important;
+      padding-bottom: 2rem !important; /* NUEVO: Reduce el espacio abajo de los items */
+    }
+
+    /* NUEVO: Reducir el espacio superior de la sección de contacto */
+    .section.cta-section {
+      padding-top: 6rem !important; /* Ajusta este número si quieres más/menos espacio */
+    }
+
+    @media (min-width: 768px) {
+      .section.portfolio-section {
+        padding-top: 5rem !important;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .section.portfolio-section {
+        padding-top: 7rem !important;
+      }
+    }
+
+    /* Ajustar el hero para que no tape tanto */
+    .hero-simple {
+      margin-bottom: 0;
+    }
+
+    .stat {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+
+    .stat-value {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--accent);
+      word-break: break-word;
+    }
+
+    @media (min-width: 768px) {
+      .stat-value {
+        font-size: 1.5rem;
+      }
+    }
+
+    .stat-label {
+      font-size: 0.7rem;
+      color: var(--muted-foreground);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      word-break: break-word;
+    }
+
+    @media (min-width: 768px) {
+      .stat-label {
+        font-size: 0.75rem;
+      }
+    }
+
+    .portfolio-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      width: 100%;
+    }
+
+    .tag {
+      padding: 0.25rem 0.75rem;
+      background-color: rgba(229, 108, 37, 0.1); /* Ajustado al nuevo color */
+      color: var(--accent);
+      font-size: 0.7rem;
+      border-radius: 9999px;
+      border: 1px solid rgba(229, 108, 37, 0.2); /* Ajustado al nuevo color */
+      word-break: break-word;
+      white-space: nowrap;
+    }
+
+    @media (min-width: 768px) {
+      .tag {
+        font-size: 0.75rem;
+      }
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-color: rgba(20, 20, 20, 0.7);
+    }
+
+    .cta-content {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+    }
+
+    @media (max-width: 767px) {
+      .cta-section {
+        text-align: center;
+      }
+    }
+
+    /* Footer (mismo que original) */
+    .footer {
+      background-color: var(--foreground);
+      color: var(--background);
+      padding: 3rem 0;
+      width: 100%;
+    }
+
+    @media (min-width: 768px) {
+      .footer {
+        padding: 4rem 0;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .footer {
+        padding: 5rem 0;
+      }
+    }
+
+    .footer-grid {
+      display: grid;
+      gap: 2.5rem;
+      width: 100%;
+    }
+
+    @media (min-width: 768px) {
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3rem;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .footer-grid {
+        grid-template-columns: 2fr 1fr 1fr;
+        gap: 2rem;
+      }
+    }
+
+    .footer-brand {
+      margin-bottom: 1.5rem;
+      display: inline-block;
+      width: 100%;
+    }
+
+    .footer-brand span:first-child {
+      font-family: var(--font-display);
+      font-size: 1.875rem;
+      letter-spacing: 0.05em;
+    }
+
+    .footer-brand span:last-child {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      letter-spacing: 0.05em;
+      color: var(--accent);
+      margin-left: 0.5rem;
+    }
+
+    .footer-description {
+      color: rgba(20, 20, 20, 0.6);
+      max-width: 100%;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+      word-break: break-word;
+    }
+
+    @media (min-width: 768px) {
+      .footer-description {
+        max-width: 28rem;
+      }
+    }
+
+    .footer-social {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-social a {
+      width: 2.5rem;
+      height: 2.5rem;
+      border: 1px solid rgba(20, 20, 20, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+    }
+
+    .footer-social a:hover {
+      background-color: var(--accent);
+      border-color: var(--accent);
+      color: var(--accent-foreground);
+    }
+
+    .footer-social svg {
+      width: 1rem;
+      height: 1rem;
+    }
+
+    .footer-heading {
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.3em;
+      color: rgba(20, 20, 20, 0.4);
+      margin-bottom: 1.5rem;
+      word-break: break-word;
+    }
+
+    .footer-links {
+      list-style: none;
+      width: 100%;
+    }
+
+    .footer-links li {
+      margin-bottom: 1rem;
+    }
+
+    .footer-links a {
+      color: rgba(20, 20, 20, 0.6);
+      transition: color 0.3s ease;
+      word-break: break-word;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent);
+    }
+
+    .footer-bottom {
+      margin-top: 3rem;
+      padding-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      width: 100%;
+      text-align: center;
+    }
+
+    @media (min-width: 768px) {
+      .footer-bottom {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+      }
+    }
+
+    .footer-copyright {
+      font-size: 0.875rem;
+      color: rgba(20, 20, 20, 0.4);
+      word-break: break-word;
+    }
+
+    .footer-legal {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      font-size: 0.875rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    @media (min-width: 768px) {
+      .footer-legal {
+        justify-content: flex-start;
+      }
+    }
+
+    .footer-legal a {
+      color: rgba(20, 20, 20, 0.4);
+      transition: color 0.3s ease;
+      word-break: break-word;
+    }
+
+    .footer-legal a:hover {
+      color: var(--accent);
+    }
+
+    .footer .logo {
+      justify-content: flex-start;
+    }
+
+/* Además, el texto de la primera columna debe estar alineado a la izquierda */
+.footer > .container > .footer-grid > div:first-child {
+  text-align: left;
+}
+    /* ============================================
+   FIX PARA HEADER EN MÓVIL - NO CORTAR LOGO
+   ============================================ */
+
+/* Logo como imagen */
+.logo-image {
+  height: 45px; /* Tamaño del logo */
+  width: auto;
+  max-width: 100%;
+}
+
+/* Para tablets (768px a 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .header, .header-inner {
+    height: 75px;
+    min-height: 75px;
+  }
+  
+  .logo-image {
+    height: 42px;
+  }
+}
+
+/* Para móviles (menos de 768px) */
+@media (max-width: 767px) {
+  /* Header fijo con altura segura */
+  .header {
+    height: auto;
+    min-height: 70px;
+    padding: 12px 0;
+    transform: translateY(0) !important;
+    width: 100%;
+  }
+  
+  /* Contenedor interno flexible */
+  .header-inner {
+    height: 100%;
+    min-height: 46px; /* 70px - 24px de padding = 46px */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1rem;
+  }
+  
+  /* Contenedor del logo */
+  .logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    max-height: 46px;
+    width: 100%;
+    gap: 0; /* Elimina espacio entre elementos */
+  }
+  
+  /* Imagen del logo - tamaño controlado */
+  .logo-image {
+    height: 40px;
+    max-height: 40px;
+    width: auto;
+    max-width: 140px;
+    object-fit: contain;
+  }
+  
+  /* Eliminar efectos que puedan causar problemas */
+  .logo:hover .logo-image {
+    transform: none;
+  }
+  
+  /* Asegurar que el header scrolled no cambie dimensiones */
+  .header.scrolled {
+    min-height: 70px;
+    padding: 12px 0;
+  }
+
+  /* Ajustes específicos para móvil */
+  .portfolio-stats {
+    justify-content: space-between;
+  }
+
+  .stat {
+    flex: 1;
+    min-width: 90px;
+  }
+
+  .btn-lg {
+    padding: 0.875rem 1.5rem;
+    font-size: 0.95rem;
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .hero-simple-title {
+    font-size: clamp(2.2rem, 7vw, 3.5rem);
+  }
+
+  .section-title {
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+  }
+
+  .portfolio-tags {
+    justify-content: flex-start;
+  }
+
+  .tag {
+    font-size: 0.65rem;
+    padding: 0.2rem 0.6rem;
+  }
+}
+
+/* Ajustes adicionales para pantallas muy pequeñas */
+@media (max-width: 380px) {
+  .container {
+    padding: 0 0.75rem;
+  }
+
+  .hero-simple-title {
+    font-size: clamp(1.8rem, 6vw, 2.8rem);
+  }
+
+  .section-title {
+    font-size: clamp(1.6rem, 4.5vw, 2.2rem);
+  }
+
+  .portfolio-content {
+    padding: 1.25rem;
+  }
+
+  .portfolio-title {
+    font-size: 1.1rem;
+  }
+
+  .portfolio-description {
+    font-size: 0.9rem;
+  }
+
+  .stat-value {
+    font-size: 1.1rem;
+  }
+
+  .stat-label {
+    font-size: 0.65rem;
+  }
+}
+
+/* Prevenir desbordamiento horizontal en elementos específicos */
+.hero-simple-content,
+.section-header,
+.portfolio-item,
+.stat-card,
+.testimonial,
+.cta-content {
+  max-width: 100%;
+}
+  </style>
+</head>
+<body>
+
+  <!-- Header simplificado - solo logo -->
+  <header class="header" id="header">
+    <div class="container header-inner">
+      <div class="logo">
+        <a href="index.html">
+          <img src="assets/img/global/QFMesa-de-trabajo-2mdpi.webp"
+              alt="QFProducciones"
+              class="logo-image">
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Simple para Portafolio -->
+    <section class="hero-simple">
+      <div class="container hero-simple-content">
+        <h1 class="hero-simple-title">
+          PORTA<span class="text-accent">FOLIO</span>
+        </h1>
+        <p class="section-subtitle animate-on-scroll">
+          Casos de éxito y proyectos audiovisuales que demuestran nuestra experiencia en producción, narrativa y ejecución de contenidos multi plataformas.
+        </p>
+      </div>
+    </section>
+
+    <!-- Portfolio Grid -->
+    <section class="section portfolio-section" id="proyectos">
+      <div class="container">
+        <div class="section-header">
+          <div class="eyebrow animate-on-scroll" style="animation: none;">
+            <span class="eyebrow-line"></span>
+            <span class="eyebrow-text">Proyectos Destacados</span>
+          </div>
+          <h2 class="section-title animate-on-scroll">
+            CASOS<span class="text-accent"> DE ÉXITO</span>
+          </h2>
+          <p class="section-subtitle animate-on-scroll">
+            Una selección de proyectos que demuestran nuestra metodología de trabajo integrado y resultados comprobados
+          </p>
+        </div>
+
+        <div class="portfolio-grid">
+          
+          <!-- Proyecto 1 -->
+          <div class="portfolio-item animate-on-scroll" data-url="https://www.youtube.com/watch?v=XVG40sbPsxw">
+            <div class="portfolio-image">
+              <img src="assets\img\portafolio\wwf\wwf.webp" alt="WWF y Federación Ecuatoriana de Fútbol" loading="lazy">
+            </div>
+            <div class="portfolio-content">
+              <span class="portfolio-category">Cobertura de evento</span>
+              <h3 class="portfolio-title">WWF y Federación Ecuatoriana de Fútbol</h3>
+              <p class="portfolio-description">
+                Transmisión en vivo para un acto protocolar en vivo celebrado con el fin de unir para un fin social y ambiental. Se realizó un seguimiento en tiempo real de señal, audio y video sin intermitencias al retransmitir el evento.
+              </p>
+              <div class="portfolio-stats">
+                <div class="stat">
+                  <span class="stat-value">+1</span>
+                  <span class="stat-label">Hora de cobertura</span>
+                </div>
+              </div>
+              <div class="portfolio-tags">
+                <span class="tag">Broadcast</span>
+                <span class="tag">ONG</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Proyecto 3 -->
+          <div class="portfolio-item animate-on-scroll" data-url="projects\el-canal-del-futbol.html">
+            <div class="portfolio-image">
+              <img src="assets\img\portafolio\serie-b\ecdf.webp" alt="Liga Pro Serie B" loading="lazy">
+            </div>
+            <div class="portfolio-content">
+              <span class="portfolio-category">Transmisiones en Directo</span>
+              <h3 class="portfolio-title">El Canal del Futbol</h3>
+              <p class="portfolio-description">
+                Producción de transmisiones deportivas profesionales de la Serie B del Ecuador, con equipo técnico y humano especializado, operando en distintas ciudades y garantizando cobertura estable y de alta calidad.
+              </p>
+              <div class="portfolio-stats">
+                <div class="stat">
+                  <span class="stat-value">+70</span>
+                  <span class="stat-label">Transmisiones</span>
+                </div>
+                <div class="stat">
+                  <span class="stat-value">+150 horas</span>
+                  <span class="stat-label">De cobertura</span>
+                </div>
+              </div>
+              <div class="portfolio-tags">
+                <span class="tag">Live Broadcast</span>
+                <span class="tag">Torneo Profesional</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Proyecto 4 -->
+          <div class="portfolio-item animate-on-scroll" data-url="projects\fef.html">
+            <div class="portfolio-image">
+              <img src="assets\img\portafolio\fef\logo fef.webp" alt="Logo Federación Ecuatoriana de Fútbol" loading="lazy">
+            </div>
+            <div class="portfolio-content">
+              <span class="portfolio-category">Live Broadcast</span>
+              <h3 class="portfolio-title">Federación Ecuatoriana de Fútbol</h3>
+              <p class="portfolio-description">
+                Cobertura integral de ruedas de prensa, partidos formativos y fútbol femenino; además de transmisiones en vivo y circuitos cerrados para congresos y eventos especiales de la FEF a nivel nacional.
+              </p>
+              <div class="portfolio-stats">
+                <div class="stat">
+                  <span class="stat-value">+4</span>
+                  <span class="stat-label">Años</span>
+                </div>
+                <div class="stat">
+                  <span class="stat-value">+100</span>
+                  <span class="stat-label">Ruedas de prensa</span>
+                </div>
+              </div>
+              <div class="portfolio-tags">
+                <span class="tag">Eventos Institucionales</span>
+                <span class="tag">Coberturas Integrales</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Proyecto 5 -->
+          <div class="portfolio-item animate-on-scroll" data-url="https://www.chilevision.cl/chv-deportes/video/gol-de-chile-fernanda-pinilla-tiro-de-esquina-vs-ecuador-amistoso">
+            <div class="portfolio-image">
+              <img src="assets\img\portafolio\chilevision\chilevision.webp" alt="Logo Federación Ecuatoriana de Fútbol" loading="lazy">
+            </div>
+            <div class="portfolio-content">
+              <span class="portfolio-category">Transmisiones en Directo</span>
+              <h3 class="portfolio-title">Chilevisión</h3>
+              <p class="portfolio-description">
+                Cobertura integral de ruedas de prensa, partidos formativos y fútbol femenino; además de transmisiones en vivo y circuitos cerrados para congresos y eventos especiales de la FEF a nivel nacional.
+              </p>
+              <div class="portfolio-stats">
+                <div class="stat">
+                  <span class="stat-value">+6</span>
+                  <span class="stat-label">Horas de transmisión</span>
+                </div>
+                <div class="stat">
+                  <span class="stat-value">2</span>
+                  <span class="stat-label">Partidos</span>
+                </div>
+              </div>
+              <div class="portfolio-tags">
+                <span class="tag">Live Broadcast</span>
+                <span class="tag">Señal Internacional</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Proyecto 8 -->
+          <div class="portfolio-item animate-on-scroll" data-url="https://www.youtube.com/live/Zibda5NxDng">
+            <div class="portfolio-image">
+              <img src="assets\img\portafolio\ipf\ipf.webp" alt="Logo International Padel Federation" loading="lazy">
+            </div>
+            <div class="portfolio-content">
+              <span class="portfolio-category">Ruedas de prensa</span>
+              <h3 class="portfolio-title">International Padel Federation</h3>
+              <p class="portfolio-description">
+                Cobertura integral de ruedas de prensa, partidos formativos y fútbol femenino; además de transmisiones en vivo y circuitos cerrados para congresos y eventos especiales de la FEF a nivel nacional.
+              </p>
+              <div class="portfolio-stats">
+                <div class="stat">
+                  <span class="stat-value">+30</span>
+                  <span class="stat-label">Horas</span>
+                </div>
+                <div class="stat">
+                  <span class="stat-value">+10</span>
+                  <span class="stat-label">Partidos</span>
+                </div>
+                <div class="stat">
+                  <span class="stat-value">1</span>
+                  <span class="stat-label">Torneo Completo</span>
+                </div>
+              </div>
+              <div class="portfolio-tags">
+                <span class="tag">Live Broadcast</span>
+                <span class="tag">Deportes Varios</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Proyecto 9 -->
+          <div class="portfolio-item animate-on-scroll" data-url="projects\ue-verbo.html">
+            <div class="portfolio-image">
+              <img src="assets\img\portafolio\ue-verbo\ueverbo.webp" alt="Unidad Educativa Cristiano Verbo" loading="lazy">
+            </div>
+            <div class="portfolio-content">
+              <span class="portfolio-category">Redes Sociales</span>
+              <h3 class="portfolio-title">Unidad Educativa Cristiano Verbo</h3>
+              <p class="portfolio-description">
+                Proyecto realizado en conjunto con nuestro aliado HUNA ESTUDIOS. El proyecto incluye su gestión de una estrategia de marketing para una institución cristiana y su comunicación mediante una producción multimedia.
+              </p>
+              <div class="portfolio-stats">
+                <div class="stat">
+                  <span class="stat-value">+25%</span>
+                  <span class="stat-label">Matrículas</span>
+                </div>
+                <div class="stat">
+                  <span class="stat-value">+190k</span>
+                  <span class="stat-label">Engagement</span>
+                </div>
+              </div>
+              <div class="portfolio-tags">
+                <span class="tag">RRSS</span>
+                <span class="tag">Educación con Propósito</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Proyecto 10 -->
+          <div class="portfolio-item animate-on-scroll" data-url="https://www.facebook.com/profile.php?id=61558532862664">
+            <div class="portfolio-image">
+              <img src="assets\img\portafolio\ciudad\ciudad.webp" alt="Centro de Investigaciones CIUDAD" loading="lazy">
+            </div>
+            <div class="portfolio-content">
+              <span class="portfolio-category">Pastillas para RRSS</span>
+              <h3 class="portfolio-title">Centro de Investigaciones Ciudad</h3>
+              <p class="portfolio-description">
+                Desarrollo de campañas audiovisuales sobre género, participación ciudadana y proyectos sociales, produciendo cápsulas informativas estratégicas, dentro del proyecto 
+Sonidos Colores y Sabores EC 
+              </p>
+              <div class="portfolio-stats">
+                <div class="stat">
+                  <span class="stat-value">3</span>
+                  <span class="stat-label">Campañas</span>
+                </div>
+                <div class="stat">
+                  <span class="stat-value">+30</span>
+                  <span class="stat-label">Publicaciones</span>
+                </div>
+                <div class="stat">
+                  <span class="stat-value">+10</span>
+                  <span class="stat-label">Coberturas</span>
+                </div>
+              </div>
+              <div class="portfolio-tags">
+                <span class="tag">Marketing de Contenidos</span>
+                <span class="tag">ONG</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Proyecto 11 -->
+          <div class="portfolio-item animate-on-scroll" data-url="https://flic.kr/s/aHBqjCJcBs">
+            <div class="portfolio-image">
+              <img src="assets\img\portafolio\octavas-san-pedro\diablo huma.webp" alt="Luis Chuqui" loading="lazy">
+            </div>
+            <div class="portfolio-content">
+              <span class="portfolio-category">Eventos sociales</span>
+              <h3 class="portfolio-title">GAD Parroquial de Ascázubi</h3>
+              <p class="portfolio-description">
+                Cobertura audiovisual de una festividad tradicional en Azcázubi, Cayambe, con producción fotográfica y videos resumen que documentan y resaltan el valor cultural del evento.
+              </p>
+              <div class="portfolio-stats">
+                <div class="stat">
+                  <span class="stat-value">18</span>
+                  <span class="stat-label">Horas de Cobertura</span>
+                </div>
+              </div>
+              <div class="portfolio-tags">
+                <span class="tag">Producción Multimedia</span>
+                <span class="tag">GAD Parroquial</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Proyecto 12 -->
+          <div class="portfolio-item animate-on-scroll" data-url="projects\buenavista-bread.html">
+            <div class="portfolio-image">
+              <img src="assets\img\portafolio\buenavista\comiendo-buenavista.webp" alt="Buenavista Bread" loading="lazy">
+            </div>
+            <div class="portfolio-content">
+              <span class="portfolio-category">Branding</span>
+              <h3 class="portfolio-title">Buenavista Bread</h3>
+              <p class="portfolio-description">
+                Creación integral 360 de la identidad visual y estrategia digital, incluyendo branding, piezas gráficas, estilo audiovisual y plan de marketing en redes sociales para posicionar y escalar a un restaurante gourmet.
+              </p>
+              <div class="portfolio-stats">
+                <div class="stat">
+                  <span class="stat-value">+60</span>
+                  <span class="stat-label">Publicaciones</span>
+                </div>
+                <div class="stat">
+                  <span class="stat-value">+10</span>
+                  <span class="stat-label">Recursos Visuales</span>
+                </div>
+              </div>
+              <div class="portfolio-tags">
+                <span class="tag">Branding</span>
+                <span class="tag">Empresa Privada</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section cta-section" id="contacto">
+      <div class="container cta-content">
+        <div class="section-header">
+          <h2 class="section-title animate-on-scroll">
+            ¿LISTO PARA<span class="text-accent"> TRABAJAR JUNTOS?</span>
+          </h2>
+          <p class="section-subtitle animate-on-scroll">
+            Contáctanos para discutir cómo podemos llevar tu proyecto al siguiente nivel con nuestra metodología de trabajo integrado.
+          </p>
+        </div>
+        <div class="animate-on-scroll">
+          <a href="https://wa.me/593986833077" class="btn btn-primary btn-lg">
+            Solicitar Propuesta
+            <span class="arrow-animate">&rarr;</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="logo">
+            <img src="assets/img/global/QFMesa-de-trabajo-2mdpi.webp" alt="QFProducciones" class="logo-image">
+          </div>
+          <p class="footer-description">
+            Creación de contenidos audiovisuales para todo tipo de eventos. Ofrecemos servicios de grabación, edición, transmisión y narración con equipos de alta calidad y profesionales capacitados.
+          </p>
+          <div class="footer-social">
+            <a href="https://qfproduccionesec.online" target="_blank" rel="noopener noreferrer" aria-label="Web">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="2" y1="12" x2="22" y2="12"/>
+                <path d="M12 2a15.3 15.3 0 0 1 0 20a15.3 15.3 0 0 1 0-20"/>
+              </svg>
+            </a>
+            <a href="https://www.facebook.com/qfproducciones/?locale=es_LA" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="footer-heading">Información</h3>
+          <ul class="footer-links">
+            <li><a href="https://qfproduccionesec.online/" target="_blank">Página Web</a></li>
+            <li><a href="https://hunaestudios.github.io" target="_blank">Socios: Huna Estudios</a></li>
+            <li><a href="#proyectos">Proyectos</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer-heading">Contacto</h3>
+          <ul class="footer-links">
+            <li>
+              <a href="mailto:produccion@qfproducciones.com" target="_blank" rel="noopener noreferrer">produccion@qfproducciones.com</a>
+            </li>
+            <li>
+              <a href="https://wa.me/+593986833077" target="_blank" rel="noopener noreferrer">+593 98 683 3077</a>
+            </li>
+            <li>
+              <a href="https://share.google/rIY6LdLNj6Bne4eb8" target="_blank" rel="noopener noreferrer">
+                Jaime Chiriboga Quito 4993, Quito 170511
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copyright">2026 QFProducciones. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Header scroll effect
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Intersection Observer for scroll animations
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, index * 60);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.animate-on-scroll').forEach((el) => {
+      observer.observe(el);
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Font Awesome para los íconos
+    const faScript = document.createElement('script');
+    faScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js';
+    faScript.integrity = 'sha512-fD9DI5bZwQxOi7MhYWnnNPlvXdp/2Pj3XSTRrFs5FQa4mizyGLnJcN6tuvUS6LbmgN1ut+XGSABKvjN0H6Aoow==';
+    faScript.crossOrigin = 'anonymous';
+    faScript.referrerPolicy = 'no-referrer';
+    document.head.appendChild(faScript);
+
+    // Prevenir zoom en input en iOS
+    document.addEventListener('touchstart', function() {}, {passive: true});
+
+    // Hacer que toda la tarjeta del proyecto sea clicable
+document.querySelectorAll('.portfolio-item').forEach(item => {
+  item.addEventListener('click', function() {
+    // Obtener el enlace de la página del proyecto
+    // Puedes agregar un atributo data-url a cada portfolio-item
+    // Ejemplo: <div class="portfolio-item" data-url="buenavista-bread.html">
+    const url = this.getAttribute('data-url') || 'proyecto-detalle.html';
+    window.location.href = url;
+  });
+  
+  // Cambiar cursor a pointer
+  item.style.cursor = 'pointer';
+  
+  // Añadir transición suave para el hover
+  item.addEventListener('mouseenter', function() {
+    this.style.transform = 'translateY(-10px)';
+    this.style.boxShadow = '0 20px 40px rgba(229, 108, 37, 0.2)';
+  });
+  
+  item.addEventListener('mouseleave', function() {
+    this.style.transform = 'translateY(0)';
+    this.style.boxShadow = 'none';
+  });
+});
+  </script>
+</body>
+</html>
