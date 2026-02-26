@@ -1000,7 +1000,7 @@
             </div>
             <div class="portfolio-content">
               <span class="portfolio-category">Cobertura de evento</span>
-              <h3 class="portfolio-title">WWF y Federación Ecuatoriana de Fútbol</h3>
+              <h3 class="portfolio-title">WWF Ecuador</h3>
               <p class="portfolio-description">
                 Transmisión en vivo para un acto protocolar en vivo celebrado con el fin de unir para un fin social y ambiental. Se realizó un seguimiento en tiempo real de señal, audio y video sin intermitencias al retransmitir el evento.
               </p>
@@ -1069,6 +1069,62 @@
               <div class="portfolio-tags">
                 <span class="tag">Eventos Institucionales</span>
                 <span class="tag">Coberturas Integrales</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Proyecto 4 -->
+          <div class="portfolio-item animate-on-scroll" data-url="https://hunaestudios.pixieset.com/fotografiadeportiva/">
+            <div class="portfolio-image">
+              <img src="assets\img\portafolio\conmebol\logo conmebol.webp" alt="Logo Conmebol Libertadores" loading="lazy">
+            </div>
+            <div class="portfolio-content">
+              <span class="portfolio-category">Fotografía Deportiva</span>
+              <h3 class="portfolio-title">Acreditación Conmebol Libertadores</h3>
+              <p class="portfolio-description">
+                Fotografía profesional de eventos deportivos nacionales e Internacionales como la Copa Ecuador, o de partidos de la Selección Ecuatoriana de Fútbol en Eliminatorias Sudamericanas Conmebol.
+              </p>
+              <div class="portfolio-stats">
+                <div class="stat">
+                  <span class="stat-value">+100</span>
+                  <span class="stat-label">Fotos</span>
+                </div>
+                <div class="stat">
+                  <span class="stat-value">+20</span>
+                  <span class="stat-label">Partidos</span>
+                </div>
+              </div>
+              <div class="portfolio-tags">
+                <span class="tag">Eventos Deportivos</span>
+                <span class="tag">Fotografía Profesional</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Proyecto 4 -->
+          <div class="portfolio-item animate-on-scroll" data-url="https://www.youtube.com/watch?v=qgfjxRQYRsg">
+            <div class="portfolio-image">
+              <img src="assets\img\portafolio\marathon\logo marathon.webp" alt="Logo Marathon Sports" loading="lazy">
+            </div>
+            <div class="portfolio-content">
+              <span class="portfolio-category">Live Broadcast</span>
+              <h3 class="portfolio-title">Marathon Sports</h3>
+              <p class="portfolio-description">
+                Transmisión en simultáneo de múltiples partidos con monitoreo en tiempo real para una retransmisión impecable de audio y video en las redes de Marathon Sports para la Copa Marathon y FIFA+.
+              </p>
+              <div class="portfolio-stats">
+                <div class="stat">
+                  <span class="stat-value">+100</span>
+                  <span class="stat-label">Fotos</span>
+                </div>
+                <div class="stat">
+                  <span class="stat-value">+20</span>
+                  <span class="stat-label">Partidos</span>
+                </div>
+              </div>
+              <div class="portfolio-tags">
+                <span class="tag">Eventos Deportivos</span>
+                <span class="tag">Fotografía Profesional</span>
               </div>
             </div>
           </div>
@@ -1394,7 +1450,11 @@ document.querySelectorAll('.portfolio-item').forEach(item => {
     // Puedes agregar un atributo data-url a cada portfolio-item
     // Ejemplo: <div class="portfolio-item" data-url="buenavista-bread.html">
     const url = this.getAttribute('data-url') || 'proyecto-detalle.html';
-    window.location.href = url;
+    if (url.startsWith('http://') || url.startsWith('https://')) {
+      window.open(url, '_blank', 'noopener,noreferrer');
+    } else {
+      window.location.href = url;
+    }
   });
   
   // Cambiar cursor a pointer
